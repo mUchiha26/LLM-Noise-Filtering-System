@@ -1,0 +1,132 @@
+text,label
+"Violation of the principle of least privilege or deny by default",1
+"Bypassing access control checks by modifying the URL",1
+"Exploiting vulnerabilities in third-party libraries",1
+"Using default or weak credentials",1
+"An application encrypts credit card numbers in a database, but SQL injection can retrieve the data in clear text after decryption.",1
+"Exploiting misconfigured permissions on cloud services",1
+"Exploiting vulnerabilities in web applications",1
+"Permitting viewing or editing someone else's account by providing its unique identifier",1
+"Exploiting vulnerabilities in authentication mechanisms",1
+"Cryptographic failures",1
+"Exploiting vulnerabilities in session management",1
+"Accessing an API with missing access controls for POST, PUT, and DELETE",1
+"Classify data processed, stored, or transmitted by an application based on sensitivity and requirements.",uncertain
+"Do not store sensitive data unnecessarily.",uncertain
+"Discard sensitive data as soon as possible or use compliant tokenization or truncation.",uncertain
+"Data that is not retained cannot be stolen.",uncertain
+"Encrypt all sensitive data at rest.",uncertain
+"Establish and use a secure development lifecycle with AppSec professionals.",uncertain
+"Establish and use secure design patterns or ready-to-use secure components.",uncertain
+"Use threat modeling for critical authentication, access control, business logic, and key flows.",uncertain
+"Integrate security language and controls into user stories.",uncertain
+"Integrate plausibility checks at each tier from frontend to backend.",uncertain
+"Write unit and integration tests to validate resistance to the threat model.",uncertain
+"Compile use cases and misuse cases for each application tier.",uncertain
+"Segregate system and network tier layers based on exposure and protection needs.",uncertain
+"Segregate tenants robustly by design throughout all tiers.",uncertain
+"Limit resource consumption by user or service.",uncertain
+"Use strong standard algorithms, protocols, and keys with proper key management.",uncertain
+"Encrypt all data in transit with secure protocols and enforce encryption directives.",uncertain
+"The password database uses unsalted or simple hashes, making passwords crackable after database theft.",1
+"A file upload flaw allows an attacker to retrieve the password database.",1
+"Unsalted hashes can be exposed with rainbow tables of pre-calculated hashes.",1
+"Simple or fast hash functions may be cracked by GPUs even when salted.",1
+"Disable caching for responses that contain sensitive data.",uncertain
+"A site does not enforce TLS for all pages or supports weak encryption.",1
+"An attacker can downgrade HTTPS to HTTP, intercept requests, and steal session cookies.",1
+"An attacker can replay a stolen session cookie and hijack an authenticated session.",1
+"An attacker can alter transported data, such as a money transfer recipient.",1
+"Apply required security controls according to data classification.",uncertain
+"Do not use legacy protocols such as FTP and SMTP for transporting sensitive data.",uncertain
+"Store passwords using strong adaptive salted hashing functions such as Argon2, scrypt, bcrypt, or PBKDF2.",uncertain
+"Initialization vectors must be chosen appropriately for the cryptographic mode of operation.",uncertain
+"For many modes, initialization vectors should come from a cryptographically secure pseudo-random number generator.",uncertain
+"For nonce-based modes, initialization vectors do not need a cryptographically secure pseudo-random number generator.",uncertain
+"An initialization vector must never be reused with the same key.",uncertain
+"Always use authenticated encryption instead of encryption alone.",uncertain
+"Keys should be generated with cryptographic randomness and stored as byte arrays in memory.",uncertain
+"If a password is used, convert it to a key with an appropriate password-based key derivation function.",uncertain
+"Use cryptographic randomness where appropriate and avoid predictable or low-entropy seeding.",uncertain
+"Avoid deprecated cryptographic functions and padding schemes such as MD5, SHA1, and PKCS #1 v1.5.",uncertain
+"Verify the effectiveness of security configuration and settings independently.",uncertain
+"Access control is only effective in trusted server-side code or serverless APIs where checks cannot be modified by attackers.",1
+"Implement access control mechanisms once and reuse them throughout the application.",uncertain
+"Minimize Cross-Origin Resource Sharing usage.",uncertain
+"Enforce unique business limit requirements through domain models.",uncertain
+"Perform access control checks consistently in a centralized manner.",uncertain
+"Disable web server directory listing and ensure metadata and backup files are not in web roots.",uncertain
+"Ninety-four percent of applications were tested for some form of broken access control.",1
+"The application uses unverified data in a SQL call that accesses account information.",1
+"An attacker force-browses target URLs that should require admin rights.",1
+"Elevation of privilege",1
+"Metadata manipulation can tamper with JWTs, cookies, or hidden fields to elevate privileges.",1
+"Abusing JWT invalidation can lead to access control bypass.",1
+"CORS misconfiguration allows API access from unauthorized or untrusted origins.",1
+"Stateful session identifiers should be invalidated on the server after logout.",uncertain
+"Attackers can use stolen or forged cookies to impersonate users and gain unauthorized access.",1
+"Developers and QA staff should include functional access control unit and integration tests.",uncertain
+"User-supplied data is not validated, filtered, or sanitized by the application.",1
+"Dynamic queries or non-parameterized calls are used directly in the interpreter without context-aware escaping.",1
+"Hostile data is used in ORM search parameters to extract additional sensitive records.",1
+"Hostile data is concatenated into SQL, commands, or stored procedures.",1
+"Use a safe API that avoids the interpreter entirely, uses parameterization, or migrates to ORM tools.",uncertain
+"Even parameterized stored procedures can introduce SQL injection when queries and data are concatenated.",1
+"Executing hostile data with EXECUTE IMMEDIATE or exec can introduce SQL injection.",1
+"Use positive server-side input validation.",uncertain
+"Input validation is not a complete defense when applications require special characters.",uncertain
+"For residual dynamic queries, escape special characters using interpreter-specific syntax.",uncertain
+"SQL structures like table and column names cannot be escaped safely from user-supplied input.",1
+"User-supplied SQL structure names are dangerous.",1
+"This issue is common in report-writing software.",uncertain
+"An application uses untrusted data to build a vulnerable SQL query.",1
+"Blind trust in frameworks can still result in vulnerable queries such as HQL.",1
+"Determine protection needs of data in transit and at rest.",uncertain
+"Passwords, credit card numbers, health records, personal information, and business secrets require extra protection.",uncertain
+"Data under privacy laws or regulations requires additional protection.",uncertain
+"Data transmitted in clear text over protocols like HTTP, SMTP, or FTP is at risk.",1
+"External internet traffic is hazardous and internal traffic should also be verified.",uncertain
+"Old or weak cryptographic algorithms or protocols may still be in use.",1
+"Default crypto keys, weak generated keys, key reuse, or missing rotation are security risks.",1
+"Checking crypto keys into source code repositories is a security risk.",1
+"Missing encryption enforcement or missing browser security headers is a security weakness.",1
+"The received server certificate and trust chain must be properly validated.",uncertain
+"Reused or insecure initialization vectors and insecure modes such as ECB are cryptographic weaknesses.",1
+"Using encryption without authentication can be inappropriate.",uncertain
+"Using passwords as cryptographic keys without key derivation is a security weakness.",1
+"Randomness not designed for cryptographic use can break security.",1
+"Overwriting strong seeding with low-entropy seeds can break cryptographic security.",1
+"Deprecated hashes such as MD5 or SHA1 are security weaknesses when cryptographic hashes are needed.",1
+"Deprecated cryptographic padding methods such as PKCS #1 v1.5 are security weaknesses.",1
+"Cryptographic error messages or side channels can be exploitable in padding oracle attacks.",1
+"Insecure design",1
+"A risk category focuses on design and architectural flaws and promotes threat modeling and secure design patterns.",uncertain
+"Insecure design represents missing or ineffective control design.",1
+"Insecure design is different from insecure implementation.",uncertain
+"Design flaws and implementation defects have different root causes and remediations.",uncertain
+"A secure design can still have implementation defects that are exploitable.",uncertain
+"An insecure design cannot be fixed by perfect implementation because required controls were never created.",1
+"Lack of business risk profiling can contribute to insecure design.",1
+"Failure to determine required security design level can contribute to insecure design.",1
+"Collect and negotiate business and protection requirements for confidentiality, integrity, availability, and authenticity.",uncertain
+"Consider tenant segregation needs in addition to access control.",uncertain
+"Compile functional and non-functional technical security requirements.",uncertain
+"Plan and negotiate budget for design, build, testing, operations, and security activities.",uncertain
+"Secure design is a culture and methodology that continuously evaluates threats.",uncertain
+"Threat modeling should be integrated into refinement sessions.",uncertain
+"Review changes in data flows and security controls during development.",uncertain
+"In user story development, determine correct flows and failure states and align responsible parties.",uncertain
+"Analyze assumptions and conditions for expected and failure flows.",uncertain
+"Validate assumptions and enforce conditions needed for proper behavior.",uncertain
+"Document secure design results in user stories.",uncertain
+"Learn from mistakes and incentivize security improvements.",uncertain
+"Secure design is neither an add-on nor a standalone tool.",uncertain
+"Secure software requires a secure development lifecycle, secure design patterns, component libraries, tooling, and threat modeling.",uncertain
+"Engage security specialists from project start through maintenance.",uncertain
+"OWASP SAMM can help structure secure software development efforts.",uncertain
+"Credential recovery workflows using security questions and answers are prohibited by major standards.",1
+"Security questions cannot be trusted as strong evidence of identity.",1
+"Such code should be removed and replaced with a more secure design.",uncertain
+"A cinema booking flow with weak limits can be abused to reserve massive inventory and cause loss of income.",1
+"An e-commerce site without anti-bot protections can be abused by scalpers.",1
+"Anti-bot design and domain logic rules can identify and reject inauthentic purchases.",uncertain

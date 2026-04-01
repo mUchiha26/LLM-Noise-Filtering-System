@@ -64,8 +64,8 @@ graph LR
 project/
 |
 |-- main.py      # Pipeline execution
-|-- filter.py    # Rule-based filtering
-|-- llm.py       # AI classification
+|-- regex_filter.py    # Rule-based filtering
+|-- llm_classifier.py       # AI classification
 |-- utils.py     # Helper functions
 |-- data/        # Sample logs
 `-- README.md
