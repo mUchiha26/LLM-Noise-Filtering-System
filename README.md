@@ -61,19 +61,43 @@ graph LR
 ## 📂 Project Structure
 
 ```text
-project/
-|
-|-- main.py      # Pipeline execution
-|-- regex_filter.py    # Rule-based filtering
-|-- llm_classifier.py       # AI classification
-|-- utils.py     # Helper functions
-|-- data/        # Sample logs
+LLM Noise Filtering System/
+|-- main.py                # CLI entry point
+|-- pipeline.py            # Orchestration logic
+|-- setup.py               # Backward-compatible launcher
+|-- core/
+|   |-- chunker.py         # Text chunking
+|   |-- regex_filter.py    # Rule-based filtering
+|   `-- llm_classifier.py  # LLM classification
+|-- data/                  # Sample and dataset files
+|-- docs/                  # Notes and design docs
 `-- README.md
 ```
 
 ---
 
 ## 🧪 Usage
+
+### Configure Environment (for API mode)
+
+```bash
+export LLM_MODE=api
+export LLM_MODEL=openai/gpt-5.4
+export OPENROUTER_API_KEY=your_key_here
+```
+
+Local mode example:
+
+```bash
+export LLM_MODE=local
+export LLM_MODEL=llama3
+```
+
+Run pipeline:
+
+```bash
+python main.py data/sample.txt
+```
 
 ### Example Input
 

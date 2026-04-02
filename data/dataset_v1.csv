@@ -8,7 +8,7 @@ text,label
 "Exploiting vulnerabilities in web applications",1
 "Permitting viewing or editing someone else's account by providing its unique identifier",1
 "Exploiting vulnerabilities in authentication mechanisms",1
-"Cryptographic failures",1
+"Cryptographic failures",0
 "Exploiting vulnerabilities in session management",1
 "Accessing an API with missing access controls for POST, PUT, and DELETE",1
 "Classify data processed, stored, or transmitted by an application based on sensitivity and requirements.",uncertain
@@ -65,7 +65,7 @@ text,label
 "CORS misconfiguration allows API access from unauthorized or untrusted origins.",1
 "Stateful session identifiers should be invalidated on the server after logout.",uncertain
 "Attackers can use stolen or forged cookies to impersonate users and gain unauthorized access.",1
-"Developers and QA staff should include functional access control unit and integration tests.",uncertain
+"Developers and QA staff should include functional access control unit and integration tests.",0
 "User-supplied data is not validated, filtered, or sanitized by the application.",1
 "Dynamic queries or non-parameterized calls are used directly in the interpreter without context-aware escaping.",1
 "Hostile data is used in ORM search parameters to extract additional sensitive records.",1
@@ -130,3 +130,403 @@ text,label
 "A cinema booking flow with weak limits can be abused to reserve massive inventory and cause loss of income.",1
 "An e-commerce site without anti-bot protections can be abused by scalpers.",1
 "Anti-bot design and domain logic rules can identify and reject inauthentic purchases.",uncertain
+"The product constructs an SQL command using externally influenced input without neutralizing special elements.",1
+"Without sufficient neutralization of SQL syntax, user input can be interpreted as SQL instead of ordinary data.",1
+"SQL injection can allow attackers to read, modify, or delete sensitive application data.",1
+"Poor SQL authentication queries can allow attackers to assume another user's identity.",1
+"The product does not neutralize user-controllable input before it is placed in web page output.",1
+"Reflected XSS occurs when request input is reflected back and executed by the victim's browser.",1
+"Stored XSS can execute malicious content later when data is read from a trusted data store.",1
+"Access control failures can lead to unauthorized information disclosure, modification, or destruction.",1
+"Force browsing to privileged pages as a standard user is a broken access control flaw.",1
+"CORS misconfiguration can allow API access from unauthorized origins.",1
+"OpenCRE is an interactive knowledge graph that links security standards and guidelines.",0
+"OpenCRE links sections of standards to corresponding common requirements.",0
+"Map Analysis is used to explore connections between two standards.",0
+"The OWASP Top 10 is a standard awareness document for developers and web application security.",0
+"Using the OWASP Top 10 can be a first step toward more secure coding culture.",0
+"The credit card fraud dataset contains transactions made by European cardholders in September 2013.",0
+"The dataset has 492 frauds out of 284807 transactions and is highly unbalanced.",0
+"Feature Class takes value 1 for fraud and 0 otherwise.",0
+"Features V1 through V28 are principal components obtained with PCA.",0
+"Confusion matrix accuracy is not meaningful for this unbalanced classification task.",0
+"Learn web development provides structured tutorials for front-end developers.",0
+"Core modules teach essential front-end development skills and practices.",0
+"Test your skills articles assess isolated topics such as HTML links, CSS box model, and JavaScript functions.",0
+"Challenge activities test the ability to combine multiple features to build complete websites or programs.",0
+"A free Python course teaches programming basics such as lists, conditionals, strings, tuples, and functions.",0
+"Beginner Python learning paths include modules on loops, functions, lists, and external libraries.",0
+"No-cost programming courses can prepare learners for machine learning and SQL study.",0
+"Cloudflare disclosed request smuggling vulnerabilities in Pingora OSS deployments and fixed them in Pingora 0.8.0.",1
+"Log Explorer can identify and investigate multi-vector attacks across additional datasets.",1
+"A stateful API vulnerability scanner can proactively find logic flaws that standard defensive tools miss.",1
+"Cloudflare Client-Side Security uses an AI detection system to catch sophisticated zero-day exploits.",1
+"Dynamic Workers execute AI-generated code in secure lightweight isolates.",0
+"Adjusting fsGroupChangePolicy reduced Kubernetes restart times from 30 minutes to 30 seconds.",0
+"Broken access control allows attackers to bypass authorization checks and access unauthorized resources",1
+"SQL injection vulnerabilities occur when user input is concatenated directly into database queries without sanitization",1
+"Cross-site scripting flaws enable attackers to inject malicious scripts into web pages viewed by other users",1
+"Authentication mechanisms that fail to limit brute-force attempts allow credential guessing attacks",1
+"Insecure deserialization can enable remote code execution when untrusted data is processed without validation",1
+"Security misconfiguration such as default credentials or verbose error messages exposes sensitive system details",1
+"XML External Entity vulnerabilities allow attackers to read internal files or perform server-side request forgery",1
+"Cryptographic failures including weak hashing or plaintext storage of passwords compromise data confidentiality",1
+"Insufficient logging and monitoring delays detection of security incidents and attack reconnaissance",1
+"Using components with known vulnerabilities exposes applications to publicly documented exploit techniques",1
+"Python Flask provides a lightweight framework for building web applications with minimal configuration",0
+"Django includes an ORM that maps Python classes to database tables for simplified data management",0
+"REST APIs use HTTP methods like GET and POST to perform CRUD operations on resources",0
+"Jinja2 is a templating engine that allows dynamic content generation in Python web applications",0
+"ASGI enables asynchronous Python web servers to handle concurrent connections more efficiently",0
+"Pytest is a testing framework that supports fixtures and parameterization for Python unit tests",0
+"PostgreSQL is a relational database system that supports complex queries and ACID transactions",0
+"Docker containers package applications with dependencies to ensure consistent deployment environments",0
+"Celery is a distributed task queue that enables background job processing in Python applications",0
+"FastAPI automatically generates OpenAPI documentation for endpoints defined with type hints",0
+"An unauthenticated remote attacker can exploit insufficient input validation to access backend components beyond their intended scope via path traversal, resulting in exposure of sensitive information.",1
+"A classic path traversal vulnerability occurs when a file path comes directly from a user and is immediately used to read the file without proper validation.",1
+"Broken Access Control remains in first place, confirming that access control errors are among the most critical and widespread problems in modern web applications.",1
+"Using outdated cryptographic algorithms or hash functions such as MD5 or SHA1 is considered a cryptographic failure.",1
+"Insecure design represents missing or ineffective control design, which cannot be fixed by perfect implementation because required controls were never created.",1
+"Software supply chain failures occur when attackers target the entire supply chain, from code repositories and CI/CD pipelines to final deployment artifacts.",1
+"Using default or weak credentials allows attackers to easily gain unauthorized access to systems and applications.",1
+"A path traversal vulnerability allows an attacker to access files and directories that are stored outside the web root folder.",1
+"CORS misconfiguration can allow API access from unauthorized or untrusted origins, leading to data exposure.",1
+"Failure to neutralize special elements in SQL queries can lead to SQL injection, allowing attackers to read or modify sensitive data.",1
+"An application using unsalted or simple hashes for passwords makes them crackable after database theft via rainbow tables.",1
+"Missing encryption for data in transit over protocols like HTTP, SMTP, or FTP exposes sensitive information to interception.",1
+"Using a component with known vulnerabilities can compromise the entire application and its data.",1
+"Elevation of privilege occurs when an attacker gains higher-level permissions than authorized, often through metadata manipulation in JWTs or cookies.",1
+"OpenCRE is an interactive knowledge graph that links sections of security standards to corresponding common requirements.",0
+"The OWASP Top 10 is a standard awareness document for developers and web application security professionals.",0
+"Learn web development provides structured tutorials covering HTML, CSS, and JavaScript for front-end developers.",0
+"Confusion matrix accuracy is not meaningful for unbalanced classification tasks such as fraud detection.",0
+"A free Python course teaches programming basics such as lists, conditionals, strings, tuples, and functions.",0
+"Beginner Python learning paths include modules on loops, functions, lists, and external libraries.",0
+"Cybersecurity documentation provides clear policies and procedures for managing threats and defines roles for incident response.",0
+"Secure design is a culture and methodology that continuously evaluates threats through threat modeling.",0
+"Using threat modeling for critical authentication, access control, business logic, and key flows is a secure design practice.",0
+"Limit resource consumption by user or service to prevent denial-of-service attacks.",1
+"Encrypt all data in transit with secure protocols and enforce encryption directives to prevent interception.",1
+"Store passwords using strong adaptive salted hashing functions such as Argon2, scrypt, bcrypt, or PBKDF2.",1
+"Keys should be generated with cryptographic randomness and stored as byte arrays in memory.",1
+"Avoid deprecated cryptographic functions and padding schemes such as MD5, SHA1, and PKCS #1 v1.5.",1
+"Implement access control mechanisms once and reuse them throughout the application to ensure consistency.",1
+"Disable web server directory listing and ensure metadata and backup files are not in web roots.",1
+"Stateful session identifiers should be invalidated on the server after logout to prevent session reuse.",1
+"Use a safe API that avoids the interpreter entirely, uses parameterization, or migrates to ORM tools to prevent injection attacks.",1
+"Input validation is not a complete defense when applications require special characters for legitimate functionality.",1
+"Data transmitted in clear text over protocols like HTTP, SMTP, or FTP is at risk of interception.",1
+"Default crypto keys, weak generated keys, key reuse, or missing rotation are security risks.",1
+"Checking crypto keys into source code repositories is a security risk that can lead to compromise.",1
+"Deprecated hashes such as MD5 or SHA1 are security weaknesses when cryptographic hashes are needed.",1
+"Simple or fast hash functions may be cracked by GPUs even when salted.",1
+"An attacker can downgrade HTTPS to HTTP, intercept requests, and steal session cookies.",1
+"An attacker can replay a stolen session cookie and hijack an authenticated session.",1
+"Do not use legacy protocols such as FTP and SMTP for transporting sensitive data.",1
+"Initialization vectors must never be reused with the same key in cryptographic operations.",1
+"Always use authenticated encryption instead of encryption alone to prevent tampering.",1
+"Use cryptographic randomness where appropriate and avoid predictable or low-entropy seeding.",1
+"Dynamic queries or non-parameterized calls are used directly in the interpreter without context-aware escaping.",1
+"Hostile data is concatenated into SQL, commands, or stored procedures, leading to injection vulnerabilities.",1
+"Even parameterized stored procedures can introduce SQL injection when queries and data are concatenated.",1
+"Executing hostile data with EXECUTE IMMEDIATE or exec can introduce SQL injection.",1
+"SQL structures like table and column names cannot be escaped safely from user-supplied input.",1
+"User-supplied SQL structure names are dangerous and can lead to injection attacks.",1
+"Blind trust in frameworks can still result in vulnerable queries such as HQL.",1
+"Bypassing access control checks by modifying the URL is a common broken access control flaw.",1
+"Exploiting vulnerabilities in third-party libraries can compromise application security.",1
+"Exploiting misconfigured permissions on cloud services can lead to data breaches.",1
+"Permitting viewing or editing someone else's account by providing its unique identifier is an access control flaw.",1
+"Accessing an API with missing access controls for POST, PUT, and DELETE allows unauthorized operations.",1
+"An attacker force-browses target URLs that should require admin rights to gain unauthorized access.",1
+"Metadata manipulation can tamper with JWTs, cookies, or hidden fields to elevate privileges.",1
+"Abusing JWT invalidation can lead to access control bypass and unauthorized access.",1
+"Using encryption without authentication can be inappropriate and lead to data tampering.",1
+"Randomness not designed for cryptographic use can break security and enable attacks.",1
+"Overwriting strong seeding with low-entropy seeds can break cryptographic security.",1
+"Deprecated cryptographic padding methods such as PKCS #1 v1.5 are security weaknesses.",1
+"Cryptographic error messages or side channels can be exploitable in padding oracle attacks.",1
+"Insecure design is different from insecure implementation and requires different remediation approaches.",0
+"A secure design can still have implementation defects that are exploitable despite good architecture.",0
+"Collect and negotiate business and protection requirements for confidentiality, integrity, availability, and authenticity.",0
+"Plan and negotiate budget for design, build, testing, operations, and security activities.",0
+"Threat modeling should be integrated into refinement sessions during development.",0
+"Review changes in data flows and security controls during development.",0
+"Document secure design results in user stories for traceability.",0
+"Secure design is neither an add-on nor a standalone tool but a fundamental development practice.",0
+"Secure software requires a secure development lifecycle, secure design patterns, component libraries, tooling, and threat modeling.",0
+"Engage security specialists from project start through maintenance for effective security outcomes.",0
+"OWASP SAMM can help structure secure software development efforts.",0
+"Security questions cannot be trusted as strong evidence of identity for credential recovery.",1
+"Anti-bot design and domain logic rules can identify and reject inauthentic purchases in e-commerce.",1
+"Without sufficient neutralization of SQL syntax, user input can be interpreted as SQL instead of ordinary data.",1
+"Poor SQL authentication queries can allow attackers to assume another user's identity.",1
+"Reflected XSS occurs when request input is reflected back and executed by the victim's browser.",1
+"Stored XSS can execute malicious content later when data is read from a trusted data store.",1
+"Force browsing to privileged pages as a standard user is a broken access control flaw.",1
+"Cloudflare disclosed request smuggling vulnerabilities in Pingora OSS deployments and fixed them in Pingora 0.8.0.",1
+"A stateful API vulnerability scanner can proactively find logic flaws that standard defensive tools miss.",1
+"Cloudflare Client-Side Security uses an AI detection system to catch sophisticated zero-day exploits.",1
+"Dynamic Workers execute AI-generated code in secure lightweight isolates.",0
+"Adjusting fsGroupChangePolicy reduced Kubernetes restart times from 30 minutes to 30 seconds.",0
+"The credit card fraud dataset contains transactions made by European cardholders in September 2013.",0
+"The dataset has 492 frauds out of 284807 transactions and is highly unbalanced.",0
+"Feature Class takes value 1 for fraud and 0 otherwise in the credit card dataset.",0
+"Features V1 through V28 are principal components obtained with PCA in the fraud detection dataset.",0
+"Map Analysis is used to explore connections between two security standards.",0
+"Using the OWASP Top 10 can be a first step toward more secure coding culture.",0
+"MalDataGen is an advanced Python framework for generating synthetic tabular datasets using generative models.",0
+"TS-TR evaluation measures generalization by training on synthetic data and testing on real data.",0
+"Secure design requires analyzing assumptions and conditions for expected and failure flows.",0
+"Validate assumptions and enforce conditions needed for proper behavior in secure design.",0
+"Learn from mistakes and incentivize security improvements in development processes.",0
+"Test your skills articles assess isolated topics such as HTML links, CSS box model, and JavaScript functions.",0
+"Challenge activities test the ability to combine multiple features to build complete websites or programs.",0
+"No-cost programming courses can prepare learners for machine learning and SQL study.",0
+"Log Explorer can identify and investigate multi-vector attacks across additional datasets.",1
+"Classify data processed, stored, or transmitted by an application based on sensitivity and requirements.",0
+"Do not store sensitive data unnecessarily as a security best practice.",0
+"Discard sensitive data as soon as possible or use compliant tokenization or truncation.",0
+"Data that is not retained cannot be stolen.",0
+"Encrypt all sensitive data at rest as a security control.",0
+"Establish and use a secure development lifecycle with AppSec professionals.",0
+"Establish and use secure design patterns or ready-to-use secure components.",0
+"Integrate security language and controls into user stories.",0
+"Integrate plausibility checks at each tier from frontend to backend.",0
+"Write unit and integration tests to validate resistance to the threat model.",0
+"Compile use cases and misuse cases for each application tier.",0
+"Segregate system and network tier layers based on exposure and protection needs.",0
+"Segregate tenants robustly by design throughout all tiers.",0
+"Use strong standard algorithms, protocols, and keys with proper key management.",0
+"Apply required security controls according to data classification.",0
+"Verify the effectiveness of security configuration and settings independently.",0
+"Minimize Cross-Origin Resource Sharing usage to reduce attack surface.",0
+"Enforce unique business limit requirements through domain models.",0
+"Perform access control checks consistently in a centralized manner.",0
+"Developers and QA staff should include functional access control unit and integration tests.",0
+"Determine protection needs of data in transit and at rest during design.",0
+"Passwords, credit card numbers, health records, personal information, and business secrets require extra protection.",0
+"Data under privacy laws or regulations requires additional protection.",0
+"External internet traffic is hazardous and internal traffic should also be verified.",0
+"The received server certificate and trust chain must be properly validated.",0
+"Determine required security design level based on business risk profiling.",0
+"Consider tenant segregation needs in addition to access control in multi-tenant systems.",0
+"Compile functional and non-functional technical security requirements.",0
+"Apache Log4j2 contains a vulnerability where JNDI features do not protect against attacker-controlled endpoints allowing remote code execution",1
+"Broken object level authorization occurs when APIs expose endpoints that handle object identifiers without proper access control checks",1
+"Authentication mechanisms implemented incorrectly can allow attackers to compromise tokens or assume other users identities",1
+"SQL injection vulnerabilities allow attackers to interfere with database queries through malicious input strings",1
+"Cross-site scripting flaws enable attackers to inject malicious scripts into web pages viewed by other users",1
+"Security misconfiguration happens when default settings unused features or unprotected files expose applications to attacks",1
+"Server-side request forgery vulnerabilities allow attackers to make the server send requests to unintended destinations",1
+"Deserialization of untrusted data without validation can lead to remote code execution or privilege escalation",1
+"Broken function level authorization flaws let users access administrative functions by manipulating request parameters",1
+"Excessive data exposure in API responses can leak sensitive information to unauthorized clients",1
+"HTML is the standard markup language used to create the structure and content of web pages",0
+"CSS controls the visual presentation of web pages including colors fonts layouts and responsive design",0
+"JavaScript adds interactivity to web pages by handling events animations and dynamic content updates",0
+"Python is a programming language that enables rapid development and efficient system integration",0
+"SQL is a standard language for storing manipulating and retrieving data in relational databases",0
+"Node.js allows JavaScript code to run on the server side for building scalable network applications",0
+"MongoDB is a NoSQL database that stores data in flexible JSON-like documents",0
+"REST APIs use standard HTTP methods to enable communication between client and server applications",0
+"Version control systems like Git help developers track changes and collaborate on code projects",0
+"Responsive web design ensures websites display properly across different screen sizes and devices",0
+"API keys should not be used for user authentication as they lack proper identity verification mechanisms",1
+"Transmitting passwords over unencrypted connections exposes credentials to interception and theft",1
+"Applications that accept unsanitized user input in log messages may be vulnerable to injection attacks",1
+"Endpoints that return more data fields than necessary increase the risk of sensitive information leakage",1
+"Missing rate limiting on API endpoints can allow attackers to exhaust resources through automated requests",1
+"Web applications should validate both client-side and server-side input to prevent security bypasses",1
+"Frontend frameworks provide reusable components and tools for building interactive user interfaces",0
+"Backend development involves server-side logic database management and API design for web applications",0
+"Database normalization organizes data to reduce redundancy and improve integrity in relational systems",0
+"HTTPS encrypts data transmitted between browsers and servers to protect against eavesdropping",0
+"OAuth is an authorization framework that enables third-party applications to access user resources securely",0
+"Containerization technologies package applications with dependencies for consistent deployment across environments",0
+"Applications using weak cryptographic algorithms may expose sensitive data to decryption attacks",1
+"Hardcoded credentials in source code can be extracted by attackers to gain unauthorized system access",1
+"Insecure direct object references allow attackers to access unauthorized resources by manipulating identifiers",1
+"Missing security headers like Content-Security-Policy increase vulnerability to cross-site scripting attacks",1
+"Unvalidated redirects and forwards can be exploited to phish users or bypass access controls",1
+"JSON Web Tokens should include expiration claims and be validated to prevent token replay attacks",1
+"Web development encompasses designing building and maintaining websites and web applications",0
+"APIs enable different software components to communicate using standardized data formats like JSON",0
+"Access control enforces policy such that users cannot act outside their intended permissions. Failures lead to unauthorized information disclosure or modification.",1
+"A01:2021-Broken Access Control moved up from fifth position; 94% of applications were tested for some form of broken access control.",1
+"Cryptographic Failures shift up to #2 in OWASP Top 10 2021, focusing on failures related to cryptography that lead to sensitive data exposure or system compromise.",1
+"Injection slides down to third position but still affects 94% of applications, with Cross-site Scripting now included in this category.",1
+"A04:2021-Insecure Design is a new category focusing on risks related to design flaws, calling for threat modeling and secure design patterns.",1
+"Security Misconfiguration moved up from #6; 90% of applications were tested for some form of misconfiguration.",1
+"Vulnerable and Outdated Components moves up from #9 in 2017, a known issue that is difficult to test and assess risk.",1
+"Identification and Authentication Failures slides down from second position, now including CWEs related to identification failures.",1
+"Software and Data Integrity Failures is a new category focusing on assumptions about software updates, critical data, and CI/CD pipelines without verifying integrity.",1
+"Server-Side Request Forgery is added from industry survey with above-average ratings for exploit and impact potential.",1
+"Without proper access control, an attacker can simply change the browser's 'acct' parameter to access any user's account via unverified data in SQL calls.",1
+"An attacker can force-browse target URLs requiring admin rights, such as changing the API endpoint to access admin pages.",1
+"Even with automatic database encryption, SQL injection can retrieve credit card details in clear text after decryption.",1
+"A website that does not enforce TLS on all pages allows attackers to downgrade HTTPS to HTTP and intercept session cookies.",1
+"Using untrusted data in SQL call construction allows attackers to change parameter values and retrieve all records from accounts tables.",1
+"Blind trust in frameworks can still result in vulnerable queries such as Hibernate Query Language injection.",1
+"An e-commerce site vulnerable to bots allows scalpers to buy high-end video cards, generating negative publicity and long-term animosity.",1
+"A cinema booking flow without proper limits can be abused to book six hundred seats across multiple cinemas in a few requests.",1
+"Application servers with sample applications not removed from production allow attackers to compromise the server using known flaws.",1
+"Directory listing enabled on a server allows attackers to list directories and reverse engineer Java classes to find access control flaws.",1
+"Detailed error messages returned to users can expose sensitive information or underlying vulnerable component versions.",1
+"Server-Side Request Forgery attacks occur when a web application fetches a remote resource without validating user-supplied URLs.",1
+"SSRF allows attackers to coerce the application to send crafted requests to unexpected destinations, even internal services.",1
+"Command Injection occurs when an application passes unsafe user-supplied data to a system shell.",1
+"NoSQL injection involves bypassing authentication or extracting data by manipulating NoSQL database queries.",1
+"Server-Side Template Injection lets attackers inject template directives into templates to execute arbitrary code on the server.",1
+"XML External Entities (XXE) attack occurs when XML input containing reference to external entity is processed by weakly configured parser.",1
+"Prototype Pollution is a JavaScript vulnerability that allows attackers to modify Object prototype properties.",1
+"Insecure Deserialization can lead to remote code execution by manipulating serialized objects.",1
+"Race conditions occur when timing-sensitive operations are not properly synchronized, allowing attackers to bypass logic.",1
+"File upload vulnerabilities allow attackers to upload malicious files that can compromise the server.",1
+"HTTP Host Header attacks exploit misconfigured servers that rely on the Host header for security decisions.",1
+"Web cache poisoning injects malicious content into cached responses that are served to other users.",1
+"OAuth authentication vulnerabilities can allow attackers to take over user accounts through misconfigured OAuth flows.",1
+"A path traversal attack uses directory traversal sequences to access files outside the web root directory.",1
+"Cross-Origin Resource Sharing misconfiguration can allow API access from unauthorized or untrusted origins.",1
+"JWT attacks exploit weaknesses in JSON Web Token implementations, including algorithm confusion and signature validation issues.",1
+"Business logic vulnerabilities allow attackers to abuse legitimate application functionality to achieve malicious goals.",1
+"Cyberattack severity patterns show incidents becoming slightly more frequent and costly from 2015 to 2024.",1
+"Government and IT industries suffer the highest median financial loss from cyberattacks globally.",1
+"DDoS attacks account for the highest financial loss in the IT sector at approximately $4.75 million.",1
+"Phishing causes the most financial loss in retail and banking industries.",1
+"SQL injection and ransomware cause significant financial losses in the government sector.",1
+"Hacker groups remain the most significant source of cyberattacks across many countries.",1
+"Insider-driven threats are relatively higher in India compared to other nations.",1
+"TCP-based attacks are most frequently used, exploiting specific vulnerabilities in TCP connections.",1
+"High anomaly scores correlate strongly with malware detection in network traffic analysis.",1
+"Principle of least privilege violations occur when users are granted more permissions than necessary for their role.",1
+"Using components with known vulnerabilities can compromise the entire application security posture.",1
+"Security logging and monitoring failures can directly impact visibility, incident alerting, and forensics.",1
+"The CVE Initiative was created to standardize naming of vulnerabilities, solving the problem of multiple names for the same flaw.",1
+"In 1998, over a dozen leading organizations used different names to refer to the same phf CGI vulnerability.",1
+"CVE names serve as a logical bridge connecting vulnerability databases, tools, and security advisories.",1
+"CVE compatibility evaluation verifies vendor claims of support for CVE names in products and services.",1
+"SecurityFocus, SANS, ISS, and NIPC provide periodic vulnerability summaries used to discover new vulnerabilities.",1
+"A server with unchanged default credentials allows attackers to log in and take over the entire system.",1
+"Missing security headers like HSTS can weaken TLS enforcement and allow protocol downgrade attacks.",1
+"Outdated software components often contain known vulnerabilities that attackers can exploit with automated tools.",1
+"Improper key management including key reuse and missing rotation leads to cryptographic failures.",1
+"Using MD5 or SHA1 for password hashing is a cryptographic weakness since these are deprecated hash functions.",1
+"Stolen session cookies can be replayed by attackers to hijack authenticated user sessions.",1
+"Cross-site scripting occurs when user input is reflected back without sanitization and executed by the victim's browser.",1
+"Stored XSS executes malicious content when data is read from a trusted data store.",1
+"SQL injection allows attackers to read, modify, or delete sensitive application data from databases.",1
+"Poor SQL authentication queries can allow attackers to assume another user's identity.",1
+"XML external entity injection can be used to read files or perform server-side request forgery.",1
+"Server-side template injection can lead to remote code execution on the application server.",1
+"Command injection lets attackers execute arbitrary operating system commands on the host.",1
+"Using parameterized queries prevents SQL injection by separating SQL logic from user-supplied data.",1
+"Input validation must use positive allow-list approaches rather than attempting to block dangerous input.",1
+"Prepared statements ensure user input is treated as data, not executable code, in database queries.",1
+"Stored procedures can still introduce SQL injection when queries and data are concatenated improperly.",1
+"Using EXECUTE IMMEDIATE or exec with concatenated user input introduces SQL injection risk.",1
+"ORM tools like Hibernate can still produce vulnerable queries if not used correctly.",1
+"SQL structures like table and column names cannot be safely escaped from user-supplied input.",1
+"Metadata manipulation can tamper with JWTs, cookies, or hidden fields to elevate privileges.",1
+"Abusing JWT invalidation can lead to access control bypass and unauthorized access.",1
+"CORS misconfiguration allows API access from unauthorized or untrusted origins.",1
+"Stateful session identifiers should be invalidated on the server after logout to prevent session reuse.",1
+"Force browsing to privileged pages as a standard user is a broken access control flaw.",1
+"Elevation of privilege occurs when an attacker gains higher-level permissions than authorized.",1
+"Default crypto keys and weak generated keys are security risks that can lead to data compromise.",1
+"Checking crypto keys into source code repositories is a security risk that exposes credentials.",1
+"Deprecated cryptographic padding methods such as PKCS #1 v1.5 are security weaknesses.",1
+"Cryptographic error messages can be exploitable in padding oracle side-channel attacks.",1
+"Using encryption without authentication can be inappropriate and lead to data tampering.",1
+"Randomness not designed for cryptographic use can break security and enable attacks.",1
+"Overwriting strong seeding with low-entropy seeds can break cryptographic security.",1
+"Initialization vectors must never be reused with the same key in cryptographic operations.",1
+"Avoid deprecated cryptographic functions such as MD5, SHA1 for security-sensitive operations.",1
+"Unauthenticated remote attackers can exploit path traversal to access files outside web root.",1
+"Missing access controls on API endpoints for POST, PUT, and DELETE allows unauthorized operations.",1
+"Permitting viewing or editing another user's account by providing its unique identifier is an access control failure.",1
+"Exploiting misconfigured permissions on cloud services can lead to data breaches.",1
+"Using weak or default credentials allows attackers to easily gain unauthorized access.",1
+"Bypassing access control checks by modifying URL parameters is a common web application flaw.",1
+"Exploiting vulnerabilities in third-party libraries can compromise application security.",1
+"Security questions cannot be trusted as strong evidence of identity for credential recovery.",1
+"Anti-bot design and domain logic rules can identify and reject inauthentic purchases in e-commerce.",1
+"Data transmitted in clear text over protocols like HTTP, SMTP, or FTP is at risk of interception.",1
+"External internet traffic is hazardous and internal traffic should also be verified for security.",1
+"Simple or fast hash functions may be cracked by GPUs even when salts are properly applied.",1
+"Unsalted hashes can be exposed using rainbow tables of pre-calculated hashes.",1
+"The password database using unsalted or simple hashes makes passwords crackable after database theft.",1
+"A file upload flaw allows an attacker to retrieve the password database.",1
+"An application encrypts credit card numbers but SQL injection can retrieve the data in clear text after decryption.",1
+"Violation of the principle of least privilege or deny by default is a fundamental security weakness.",1
+React utilizes one-way data flow to pass information down the component hierarchy via props.,0
+The App Router in Next.js 15 uses a file-system based routing model for modern React applications.,0
+Hydration is the process of attaching event listeners to server-rendered HTML to make it interactive.,0
+Every value in Rust has a single owner that determines when the memory is automatically released.,0
+Goroutines are independent threads of execution managed by the Go runtime for high concurrency.,0
+S3 Lifecycle policies automatically transfer data between storage classes to optimize costs.,0
+The control plane in Kubernetes manages the state of the cluster and schedules workloads to nodes.,0
+"Fragments in Android move through various lifecycle states including created, started, and resumed.",0
+Python lists are mutable sequence types used to group comma-separated values in square brackets.,0
+The Record utility type in TypeScript maps specific keys to associated value types for lookup tables.,0
+Functional components offer a conciser syntax and better readability than traditional class components.,0
+JavaScript adds interactivity to web pages by handling browser events and dynamic content updates.,0
+Data in pandas is often used to feed statistical analysis in SciPy and plotting functions in Matplotlib.,0
+Docker containers package applications with all dependencies to ensure consistent deployment environments.,0
+CSS controls the visual presentation of web pages including responsive design and layout fonts.,0
+The useEffect hook synchronizes a component with an external system or handles side effects in React.,0
+S3 Standard-Infrequent Access is ideal for data that is accessed less often but requires millisecond retrieval.,0
+An API gateway acts as a reverse proxy to accept API calls and aggregate required backend services.,0
+Scikit-learn provides a uniform interface where most estimators follow the same fit and predict pattern.,0
+Responsive web design ensures that websites display properly across different screen sizes and devices.,0
+"Honeywell Experion PKS contains an integer underflow vulnerability in the component Control Data Access",1
+"SAP Landscape Transformation allows an attacker to exploit a code injection vulnerability via the RFC function module",1
+"The Spark History Web UI is vulnerable to code execution due to overly permissive Jackson deserialization of event log data",1
+"A memory corruption vulnerability exists in Radare2 radiff2 function during kons pal initialization",1
+"Broken Object Level Authorization occurs when APIs expose endpoints that handle object identifiers without proper access control checks",1
+"Unrestricted resource consumption in APIs can lead to Denial of Service or an increase of operational costs",1
+"Unsafe consumption of APIs occurs when developers trust data received from third-party APIs more than user input",1
+"A prompt injection attack happens when an attacker manipulates a large language model's behavior by injecting malicious input",1
+"Sensitive information disclosure occurs when an LLM unintentionally reveals private or proprietary data like credentials",1
+"Software supply chain failures involve breakdowns or compromises in the process of building distributing or updating software",1
+"Mishandling of exceptional conditions involves improper error handling and systems failing open under abnormal conditions",1
+"Insecure configuration of generative AI model inference parameters like temperature can lead to text hallucinations",1
+"Calling PKCS12_get_friendlyname on a maliciously crafted file can trigger an out of bounds write in OpenSSL",1
+"Storing authentication tokens in a world-readable temporary directory allows local users to access the credentials",1
+"A vulnerability in Cisco Webex allows an unauthenticated remote attacker to conduct a cross-site scripting attack",1
+"The pandas package is used for data manipulation and analysis in Python by providing DataFrames",0
+"The features matrix in Scikit-Learn is a two-dimensional numerical array typically stored in a variable named X",0
+"In React props allow a parent component to pass data to a child component to customize its behavior",0
+"The control plane serves as the brain of the Kubernetes cluster and manages the status of all containers",0
+"Rust's ownership system guarantees memory safety at compile time without needing a garbage collector",0
+"Goroutines are lightweight threads managed by the Go runtime to handle concurrent execution within a program",0
+"TypeScript utility types like Pick and Omit allow developers to derive new types from existing ones without code duplication",0
+"A Pub/Sub topic is a named resource that represents a feed of messages for asynchronous communication",0
+"The DRY principle advocates for each piece of knowledge in a system to exist in only one place to simplify maintenance",0
+"Refactoring is the process of improving code structure and readability without changing its external behavior",0
+"The microservices architecture pattern breaks down applications into small independent services that communicate via APIs",0
+"The Observable attribute in SwiftUI allows a class to be automatically observed for changes in its properties",0
+"Android fragments move through various lifecycle states including created started resumed and destroyed",0
+"Python lists are mutable compound data types used to group together comma-separated values between square brackets",0
+"The useEffect hook in React is used to synchronize a component with an external system or handle side effects",0
+"A SQL injection flaw in the login form allows attackers to execute arbitrary queries."1	
+"Use parameterized queries or prepared statements for all database calls."	,0
+"The application trusts user input in XPath queries leading to injection."	,1
+"CVE-2024-12345: Buffer overflow in XYZ software may allow code execution.",	1
+"Encrypt API tokens in transit using TLS."2	0
+"A cross-site scripting vulnerability in comments permits stored script injection."	,1
+"Regular expressions are used for input validation."	,0
+"Hard-coded cryptographic keys were found in the source code."	,1
+"The login page uses HTTP instead of HTTPS."	,0
+"CVE-2025-6789: Improper authorization in admin panel allows privilege escalation."	,1
+"Refactoring improves code clarity."	,0
+"An attacker can bypass authorization by manipulating the user’s session cookie."	,1
+"A memory leak occurs in the image processing module."	,0
+"Missing checks on file upload permit arbitrary file write."	,1
+"JavaScript closures allow private variables."	,0
+"A path traversal vulnerability in the report generator exposes internal files."	,1
+"Avoid global variables to prevent unintended coupling."	,0
+"SQL query uses string concatenation with user input leading to injection."	,1
+"Use HTTPS for all web page requests to ensure encryption."2	,0
+"API endpoints perform no CSRF protection enabling cross-site requests."	,1
