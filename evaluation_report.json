@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "input_file": "data/sample_input.txt",
+    "input_chars": 2345,
+    "processing_time_sec": 17.69,
+    "estimated_cost_usd": 0.005,
+    "model": "openai/gpt-4o-mini",
+    "mode": "api",
+    "timestamp": "2026-04-02 20:29:29"
+  },
+  "results": {
+    "chunks_kept": 7,
+    "kept_content": [
+      "CVE-2024-10092 describes a critical remote code execution vulnerability in Apache Tomcat's default connector. Exploitation requires unauthenticated access to the management endpoint. Patch immediately.",
+      "XSS mitigation in modern SPAs requires strict output encoding and CSP headers. Frameworks like React auto-escape by default, but dangerouslySetInnerHTML bypasses this protection.",
+      "SQL injection prevention requires parameterized queries, not string concatenation. ORMs like SQLAlchemy handle this automatically, but raw queries remain dangerous.",
+      "Log4j (CVE-2021-44228) remains relevant. Many legacy systems still run vulnerable versions. Attack vectors include LDAP injection via log formatting. Patching requires JVM argument updates and library replacement.",
+      "Rate limiting and token bucket algorithms are essential for API defense. Implement at the gateway level using tools like Envoy or Kong to prevent abuse and DDoS amplification.",
+      "Cloud security posture management (CSPM) tools scan AWS/GCP/Azure for misconfigurations. Common findings: public S3 buckets, overly permissive IAM roles, unencrypted RDS instances.",
+      "Privilege escalation via sudo misconfigurations allows low-priv users to gain root access. Check /etc/sudoers for NOPASSWD rules and wildcard command permissions. Use visudo to edit safely."
+    ]
+  },
+  "analysis_guide": {
+    "check_false_positives": "Review kept_content for non-security text",
+    "check_false_negatives": "See logs/pipeline.log for rejected chunks",
+    "prompt_tuning": "Adjust criteria in config.yaml prompt_template if needed",
+    "cost_optimization": "Increase chunk_length or enable regex pre-filter to reduce LLM calls"
+  }
+}
