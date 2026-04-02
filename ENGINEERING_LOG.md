@@ -337,6 +337,26 @@ Sibling packages (`utils/`) become invisible.
 python -m core.llm_classifier  # ✅ Adds project root to sys.path
 ```
 
+## pytest + ROS 2: PYTHONPATH Conflict Resolution
+
+### Symptom
+
+`ModuleNotFoundError: lark` when running pytest, despite correct venv.
+
+### Root Cause
+
+pytest auto-discovers plugins via setuptools entry points.  
+ROS 2 installs `launch-testing` plugin to `/opt/ros/humble/...`.  
+If `PYTHONPATH` includes ROS paths, pytest loads ROS plugins → missing deps.
+
+### Fix Pattern
+
+```bash
+unset PYTHONPATH          # Remove external path pollution
+source .venv/bin/activate # Activate clean environment
+python -m pytest tests/ -v
+```
+
 ## Common Pitfalls
 
 ## Practical Rules
