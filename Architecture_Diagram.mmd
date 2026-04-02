@@ -1,0 +1,17 @@
+graph TD
+    A[Raw Text Input] --> B[setup_logging]
+    B --> C[Initialize Components]
+    C --> D[split_into_chunks]
+    D --> E{For each chunk}
+    E --> F[regex_filter]
+    F --> G{Passed filter?}
+    G -->|No| H[Log & Skip]
+    G -->|Yes| I[llm_classifier.classify]
+    I --> J{Relevant + High Confidence?}
+    J -->|Yes| K[Add to Results]
+    J -->|No/Uncertain| L[Log for Review]
+    K --> M[Next Chunk]
+    L --> M
+    H --> M
+    M --> E
+    E -->|All done| N[Return Results]

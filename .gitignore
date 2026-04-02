@@ -1,4 +1,30 @@
-/.vscode
+# Secrets & config
+.env
+*.key
+*.pem
+
+# Python virtual environment
+.venv/
+venv/
+ENV/
+
+# Python runtime files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing & coverage
+.pytest_cache/
+coverage.xml
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Other files
+roadmap.md
 roadmap.mmd
 ENGINEERING_LOG.md
-roadmap.md

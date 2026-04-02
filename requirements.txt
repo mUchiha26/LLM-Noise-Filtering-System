@@ -1,0 +1,14 @@
+# 🎓 Core dependencies for MVP
+requests>=2.31.0          # HTTP calls to LLM API
+python-dotenv>=1.0.0      # Load .env files
+pyyaml>=6.0               # Read config.yaml
+tenacity>=8.2.0           # Retry logic + circuit breaker basics
+
+# 🎓 Development & testing
+pytest>=7.4.0             # Testing framework
+pytest-cov>=4.1.0         # Test coverage reports
+
+# 🎓 Optional but recommended
+pydantic>=2.0.0           # Config validation (learn later)
+openai>=1.0.0            # OpenAI API client (if using OpenAI)
+tenacity>=8.2.0           # For advanced retry logic (learn later)

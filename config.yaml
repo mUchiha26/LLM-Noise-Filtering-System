@@ -1,0 +1,50 @@
+# 🎓 Pipeline Configuration
+# 🎓 Load this file once at startup, pass to components
+
+pipeline:
+  chunking:
+    separator: "\n\n" # Split text by paragraphs
+    min_length: 10 # Skip tiny chunks
+    max_length: 2000 # Prevent LLM context overflow
+
+  regex_filter:
+    enabled: true
+    blacklist_patterns:
+      - "buy now"
+      - "click here"
+      - "limited offer"
+    whitelist_patterns:
+      - 'CVE-\d{4}-\d+'
+      - "SQL injection"
+      - "XSS vulnerability"
+
+llm:
+  mode: "api" # "api" or "mock" (for testing)
+  model: "openai/gpt-4o-mini" # 🎓 Valid model name
+  timeout: 30 # Seconds to wait for response
+  max_retries: 3 # Retry failed API calls
+
+  # 🎓 Prompt template - keep instructions clear and delimited
+  prompt_template: |
+    You are a security content filter.
+    Classify if the text between <INPUT> tags contains relevant security knowledge.
+
+    Criteria for YES:
+    - Describes a vulnerability, attack technique, or defense method
+    - Mentions security tools, frameworks, or best practices
+    - Explains security concepts with technical detail
+
+    Criteria for NO:
+    - Marketing, spam, or unrelated content
+    - Generic tech news without security focus
+    - Personal opinions without technical substance
+
+    Answer ONLY with "YES" or "NO".
+
+    <INPUT>
+    {text}
+    </INPUT>
+
+logging:
+  level: "INFO" # DEBUG, INFO, WARNING, ERROR
+  file: "logs/pipeline.log" # Rotate logs in production

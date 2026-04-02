@@ -1,103 +1,100 @@
+"""
+🎓 llm_classifier.py - LLM-based classification
+🎓 Why: Handle nuanced security content that regex misses
+🎓 MVP Focus: Simplicity, safety, testability
+"""
 import requests
-import subprocess
+import logging
+from typing import Tuple
+from tenacity import retry, stop_after_attempt, wait_exponential
+
+from utils.config_loader import get_api_key
+
+logger = logging.getLogger(__name__)
 
 class LLMClassifier:
-    def __init__(self, mode="local", model_name="llama3"):
-        """
-        mode: "local" or "api"
-        model_name: depends on backend
-        """
-        self.mode = mode
-        self.model_name = model_name
-
-    def classify(self, text):
-        """
-        Main entry point: returns True (relevant) or False (noise)
-        """
-        prompt = self._build_prompt(text)
-
-        if self.mode == "local":
-            response = self._call_local_llm(prompt)
-        elif self.mode == "api":
-            response = self._call_api_llm(prompt)
+    def __init__(self, config: dict):
+        self.config = config["llm"]
+        self.api_key = get_api_key() if self.config["mode"] == "api" else None
+        self.model = self.config["model"]
+        self.prompt_template = self.config["prompt_template"]
+    
+    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
+    def _call_api(self, prompt: str) -> str:
+        """🎓 Safe API call with retries"""
+        if self.config["mode"] == "mock":
+            # 🎓 Mock mode for testing without API calls
+            logger.debug("Mock mode: returning 'YES'")
+            return "YES"
+        
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 10,  # 🎓 Limit output to YES/NO
+            "temperature": 0   # 🎓 Deterministic responses
+        }
+        
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=self.config["timeout"]
+        )
+        response.raise_for_status()  # 🎓 Raise on HTTP errors
+        return response.json()["choices"][0]["message"]["content"]
+    
+    def _parse_response(self, raw: str) -> Tuple[bool, str]:
+        """🎓 Strict parsing with confidence levels"""
+        cleaned = raw.strip().lower()
+        
+        if cleaned == "yes":
+            return True, "high"
+        elif cleaned == "no":
+            return False, "high"
+        elif any(word in cleaned for word in ["maybe", "uncertain", "not sure"]):
+            logger.warning(f"Ambiguous LLM response: '{raw}'")
+            return False, "low"  # Safe default
         else:
-            raise ValueError("Invalid mode")
-
-        return self._parse_response(response)
-
-    # -------------------------
-    # Prompt Engineering Layer
-    # -------------------------
-    def _build_prompt(self, text):
-        return f"""
-You are a cybersecurity expert.
-
-Task: Determine if the following text contains relevant cybersecurity knowledge.
-
-Answer ONLY with "YES" or "NO".
-
-Text:
-{text}
-"""
-
-    # -------------------------
-    # Local LLM (Ollama)
-    # -------------------------
-    def _call_local_llm(self, prompt):
+            logger.error(f"Unparseable response: '{raw}'")
+            return False, "unknown"
+    
+    def classify(self, text: str) -> Tuple[bool, str]:
+        """
+        Main entry point: classify text.
+        🎓 Returns (is_relevant, confidence) for pipeline decisions.
+        """
+        # 🎓 Input validation
+        if not text or len(text.strip()) < 5:
+            return False, "invalid"
+        
+        # 🎓 Build prompt with delimiters (prompt injection defense)
+        prompt = self.prompt_template.format(text=text)
+        
         try:
-            result = subprocess.run(
-                ["ollama", "run", self.model_name],
-                input=prompt,
-                text=True,
-                capture_output=True
-            )
-            return result.stdout.strip()
+            raw_response = self._call_api(prompt)
+            return self._parse_response(raw_response)
         except Exception as e:
-            print(f"[ERROR - LOCAL LLM] {e}")
-            return ""
+            logger.error(f"Classification failed: {e}", exc_info=True)
+            return False, "error"  # Safe fallback
 
-    # -------------------------
-    # API LLM (OpenAI / others)
-    # -------------------------
-    def _call_api_llm(self, prompt):
-        try:
-            url = "https://openrouter.ai/api/v1/chat/completions"
-
-            headers = {
-                "Authorization": "Bearer API_KEY_HERE",  # change here
-                "Content-Type": "application/json"
-            }
-
-            data = {
-                "model": "openai/gpt-5.4",  # change here
-                "messages": [
-                    {"role": "user", "content": prompt}
-                ],
-                "temperature": 0
-            }
-
-            response = requests.post(url, headers=headers, json=data)
-            #print(response.status_code, response.text)
-
-            if response.status_code != 200:
-                print("[API ERROR]", response.text)
-                return ""
-
-            return response.json()["choices"][0]["message"]["content"]
-        except Exception as e:
-            print(f"[ERROR - API LLM] {e}")
-            return ""
-
-
-    # -------------------------
-    # Output Parsing (CRITICAL)
-    # -------------------------
-    def _parse_response(self, response):
-        response = response.strip().lower()
-
-        if "yes" in response:
-            return True
-        elif "no" in response:
-            return False
-        else:
-            return False  # default safe fallback
+# 🎓 Simple test
+if __name__ == "__main__":
+    import yaml
+    from utils.config_loader import load_config
+    
+    config = load_config()
+    classifier = LLMClassifier(config)
+    
+    test_cases = [
+        "CVE-2024-1234: SQL injection in login form",
+        "Buy now! 50% off security software",
+        "This is just random text"
+    ]
+    
+    for text in test_cases:
+        result, confidence = classifier.classify(text)
+        print(f"'{text}' → {result} ({confidence})")

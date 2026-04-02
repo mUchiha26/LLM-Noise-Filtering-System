@@ -1,12 +1,19 @@
-import sys
-from pipeline import run_pipeline
+from setuptools import setup, find_packages
 
-if __name__ == "__main__":
-    with open(sys.argv[1], "r") as f:
-        text = f.read()
-
-    results = run_pipeline(text)
-
-    print("\n=== RELEVANT CONTENT ===\n")
-    for r in results:
-        print("-", r)
+setup(
+    name="llm-noise-filter",
+    version="0.1.0",
+    packages=find_packages(),
+    python_requires=">=3.10",
+    install_requires=[
+        "requests>=2.31.0",
+        "python-dotenv>=1.0.0",
+        "pyyaml>=6.0",
+        "tenacity>=8.2.0"
+    ],
+    entry_points={
+        "console_scripts": [
+            "noise-filter=main:main"
+        ]
+    }
+)
