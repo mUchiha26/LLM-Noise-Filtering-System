@@ -1,18 +1,17 @@
-# main.py (True Entry Point)
-"""
-🎓 Entry point: handles CLI args, loads config, calls orchestrator.
-"""
 import sys
+import json
 from utils.config_loader import load_config
 from pipeline import run_pipeline
 
 def main():
     config = load_config()
-    # Read from stdin or CLI args
-    text = sys.stdin.read() if not sys.stdin.isatty() else sys.argv[1]
+    text = sys.stdin.read().strip() if not sys.stdin.isatty() else " ".join(sys.argv[1:])
+    if not text:
+        print("Usage: echo 'text' | python main.py  OR  python main.py 'your text'", file=sys.stderr)
+        sys.exit(1)
+        
     results = run_pipeline(text, config)
-    for r in results:
-        print(r)
+    print(json.dumps(results, indent=2))
 
 if __name__ == "__main__":
     main()

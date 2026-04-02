@@ -1,0 +1,53 @@
+flowchart TD
+
+A[Start: Project Setup] --> B[Understand OpenCRE Structure]
+B --> C[Define Problem: Noise vs Relevant]
+
+C --> D[MVP Development 48–72h]
+
+subgraph MVP
+D --> D1[Input Handling]
+D1 --> D2[Chunking Text]
+D2 --> D3[Regex Filtering]
+D3 --> D4[LLM Classification]
+D4 --> D5[Output Clean Data]
+end
+
+D --> E[Build CLI run.py]
+E --> F[Implement pipeline.py]
+
+F --> G[GitHub Repo Setup]
+G --> G1[Clean README]
+G --> G2[Demo Example]
+
+G --> H[Publish to OWASP Community]
+
+H --> I[Get Feedback]
+I --> J[Iterate on MVP]
+
+J --> K[Improve Classification]
+J --> L[Add Evaluation]
+
+K --> M[Better Prompts / Model]
+L --> N[Manual Testing + Metrics]
+
+M --> O[Refined System]
+N --> O
+
+O --> P[Small Contributions to OWASP]
+
+P --> Q[Fix Docs / Improve Examples]
+P --> R[Open Issues / Suggestions]
+
+Q --> S[Increase Visibility]
+R --> S
+
+S --> T[GSoC Readiness]
+
+T --> U[Final System Vision]
+
+subgraph Future
+U --> U1[ML Model Training]
+U --> U2[Semantic Filtering]
+U --> U3[OpenCRE Integration]
+end
