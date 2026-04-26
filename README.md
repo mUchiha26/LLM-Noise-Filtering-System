@@ -94,6 +94,30 @@ LLM Noise Filtering System/
 
 ## 🧪 Usage
 
+### Prerequisites
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env  # Add your LLM_API_KEY
+```
+
+### Run the System
+
+```bash
+# Basic usage
+python src/main.py --input data/raw_spiderfoot_sample.json
+
+# With custom config and output directory
+python src/main.py \
+  --input data/target_recon.json \
+  --config config/custom_rules.yaml \
+  --output-dir results/custom_scan
+
+# Dry-run mode (rules only, no LLM calls)
+SCORING_THRESHOLD=1.0 python src/main.py --input data/sample.json
+```
+
 ## 📊 Evaluation
 
 The system is evaluated using a manually labeled dataset:

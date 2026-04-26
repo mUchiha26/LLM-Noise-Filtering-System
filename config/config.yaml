@@ -1,0 +1,47 @@
+pipeline:
+  chunking:
+    max_length: 512
+    separator: "\n"
+    overlap: 0
+
+  rules:
+    enabled: true
+    patterns:
+      - name: "server_banners"
+        pattern: "^(Apache|nginx|IIS|Microsoft-IIS|lighttpd)/[\\d\\.\\w]+.*$"
+        action: "discard"
+      - name: "empty_or_whitespace"
+        pattern: "^\\s*$"
+        action: "discard"
+      - name: "ipv4_loopback"
+        pattern: "^127\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$"
+        action: "discard"
+
+  llm:
+    provider: openai_compatible
+    api_url: https://openrouter.ai/api/v1
+    model: gpt-4o-mini
+    temperature: 0.1
+    max_tokens: 256
+    timeout: 15
+    prompt:
+      system: |
+        You are a security data analyst. Classify reconnaissance output snippets.
+        Return valid JSON with:
+        - relevance: 0.0 (pure noise) to 1.0 (highly relevant/critical)
+        - category: exactly one of [subdomain, ip, port, vuln, banner, cert, noise, other]
+        - reason: <=200 characters, concise justification
+        Ignore: generic software versions, loopback IPs, synthetic DNS.
+        Flag: exposed credentials, known CVE references, suspicious subdomains.
+      user: "Analyze this security recon snippet:\n\n{text}"
+
+  scoring:
+    threshold: 0.75
+    fallback_strategy: "discard"
+
+  io:
+    input_format: json
+    results_dir: results
+    results_format: json
+    logs_dir: logs
+    noise_log: noise_log.jsonl

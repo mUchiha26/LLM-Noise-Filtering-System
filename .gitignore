@@ -16,7 +16,9 @@ __pycache__/
 pytest.ini
 coverage.xml
 
-
+results/*
+logs/*
+.coverage
 
 # IDE
 .vscode/

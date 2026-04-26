@@ -258,6 +258,16 @@ Result: `pip list` shows system/ROS packages inside a venv.
 
 ```bash
 echo $PYTHONPATH          # Shows injected paths
+
+## MVP Bug Fixes (2026-04-26)
+
+- Fixed orchestrator import/runtime crash: added missing imports and restored classifier compatibility alias (`classify_with_llm`).
+- Fixed config mutation bug: switched from shallow copy to deep copy so repeated config loads do not leak state.
+- Fixed cache corruption/poisoning path: normalized old noise-log formats, flattened nested decision payloads, and ignored fallback/low-confidence cache entries.
+- Added robust input loading: pipeline now supports `.json`, `.csv`, and line-based `.txt` inputs.
+- Improved LLM reliability for MVP purpose: added JSON extraction from mixed/fenced outputs and a security-focused heuristic fallback when model responses are malformed or unavailable.
+- Added regression tests for chunking, regex filtering, scoring, config loading, LLM parsing/fallback, orchestrator integration, and cache-nesting edge cases.
+- Added manual validation dataset for quick checks: `data/manual_mvp_test_cases.csv`.
 which python              # Should point to .venv/bin/python
 pip list                  # Shows all visible packages (venv + PYTHONPATH)
 ```
