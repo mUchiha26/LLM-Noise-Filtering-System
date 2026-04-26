@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph Core Execution
+    MAIN["main.py\n(Entry Point)"]
+    PIPE["pipeline.py\n(Simple Orchestrator)"]
+    CFG["config.yaml\n(Settings)"]
+  end
+
+  subgraph Processing Modules
+    CHUNK["chunker.py\n(Basic Splitter)"]
+    RULES["rule_engine.py\n(Regex Filters)"]
+    LLM["llm_client.py\n(API Wrapper)"]
+    SCORER["scorer.py\n(Threshold Logic)"]
+    OUTPUT[filtered_output.json]
+  end
+
+  MAIN --> PIPE
+  PIPE --> CHUNK --> RULES
+  RULES -->|Passes| LLM
+  LLM --> SCORER --> PIPE
+  CFG -.-> RULES
+  CFG -.-> LLM
+  CFG -.-> SCORER
+  PIPE --> OUTPUT

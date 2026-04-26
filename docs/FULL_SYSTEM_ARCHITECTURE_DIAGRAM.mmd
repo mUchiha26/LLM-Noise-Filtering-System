@@ -1,0 +1,40 @@
+flowchart TB
+  subgraph ConfigStateLayer[Config & State Layer]
+    CFG[Pipeline Config YAML]
+    CACHE[(Result Cache\nSQLite/Redis)]
+    METRICS[(Evaluation DB\nJSON/CSV)]
+  end
+
+  subgraph IngestionOrchestrationLayer[Ingestion & Orchestration Layer]
+    API[FastAPI / CLI Interface]
+    INGEST[Text Ingestion & Normalization]
+    CHUNK[Chunking Engine]
+    ORCH[Async Pipeline Orchestrator]
+  end
+
+  subgraph FilteringAILayer[Filtering & AI Layer]
+    RULE["Rule Engine\n(Regex/YAML Filters)"]
+    ROUTER[LLM Router & Prompt Manager]
+    LLM["LLM Provider\n(OpenAI/Anthropic/Ollama)"]
+    VALIDATE[Pydantic JSON Parser]
+    SCORER[Relevance Scoring & Confidence Engine]
+    FALLBACK[Circuit Breaker & Rule Fallback]
+  end
+
+  subgraph OutputIntegrationLayer[Output & Integration Layer]
+    OUTPUT[Structured JSON/CSV Output]
+    SPIDER["SpiderFoot Adapter\n(Parse & Flatten)"]
+    DOWNSTREAM[OSINT Toolkit / Analyst Dashboard]
+  end
+
+  CFG --> ORCH
+  ORCH --> INGEST --> CHUNK --> RULE
+  RULE -->|High Confidence| OUTPUT
+  RULE -->|Ambiguous| ROUTER
+  ROUTER --> LLM
+  LLM --> VALIDATE --> SCORER
+  SCORER --> CACHE --> OUTPUT
+  FALLBACK -.-> LLM
+  ORCH -->|Async Batching| ROUTER
+  SCORER --> METRICS
+  OUTPUT --> SPIDER --> DOWNSTREAM

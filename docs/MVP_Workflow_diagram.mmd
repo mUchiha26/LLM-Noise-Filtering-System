@@ -1,0 +1,11 @@
+flowchart TD
+  A["Raw Input"] --> B["main.py"]
+  B --> C["config_loader.py"]
+  C --> D["orchestrator.py"]
+  D --> E["chunker.py"]
+  E --> F["regex_filter.py"]
+  F -->|Noise| G["logs/noise_log.jsonl"]
+  F -->|Pass| H["llm_classifier.py"]
+  H --> I["scorer.py"]
+  I -->|Drop| G
+  I -->|Keep| J["results/scan_id.json"]

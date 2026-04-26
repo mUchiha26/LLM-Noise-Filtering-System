@@ -1,0 +1,22 @@
+flowchart TD
+  A["Raw Text Input\n(SpiderFoot/Logs/Reports)"] --> B["Text Chunker\n(Semantic/Fixed-Size)"]
+  B --> C["Rule-Based Preprocessor\n(Configurable Regex & YAML)"]
+  C --> D{Confidence Check}
+  D -->|High/Definite Match| E[Bypass LLM &\nRoute to Output]
+  D -->|Low/Ambiguous| F["LLM Router\n(Prompt + Context Injection)"]
+  F --> G["LLM Provider\n(API or Local Ollama)"]
+  G --> H["Pydantic JSON Parser\n(Schema Validation)"]
+  H --> I[Relevance Scoring &\nConfidence Labeling]
+  I --> J["Result Cache\n(SQLite/Redis)"]
+  J --> K[Cleaned Output JSON\n& Downstream Workflow]
+  
+  L[Pipeline Config YAML] -.-> B
+  L -.-> C
+  L -.-> F
+  L -.-> I
+  
+  M[Async Task Queue &\nRate Limiter] -.-> F
+  N[Circuit Breaker &\nRule Fallback] -.-> G
+  O[Evaluation &\nMetrics Tracker] -.-> I
+  O --> P[Human-in-the-Loop\nReview & Feedback]
+  P -.-> L

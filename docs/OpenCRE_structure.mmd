@@ -1,0 +1,27 @@
+graph TD
+    %% Main entity types
+    A[CRE] --> B[Control]
+    A --> C["Vulnerability\n(CWE / CAPEC)"]
+    A --> D[Standard / Policy]
+    A --> E[Test Case]
+    A --> F[Code Sample / Snippet]
+    A --> G[Tool / Configuration]
+
+    %% Controls live inside standards
+    B --> D
+
+    %% Vulnerabilities can also link directly to standards and tests
+    C --> D
+    C --> E
+
+    %% Tests can reference standards and code
+    E --> D
+    E --> F
+
+    %% Code can be referenced from tools and tests
+    F --> G
+    F --> E
+
+    %% Styling hints (optional)
+    classDef entity fill:#f0f8ff,stroke:#333,stroke-width:1px;
+    class A,B,C,D,E,F,G entity;
